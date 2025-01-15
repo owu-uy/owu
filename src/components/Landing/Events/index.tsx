@@ -9,15 +9,12 @@ type EventsProps = {
   title?: string;
   subtitle?: string;
   events?: {
-    id: string;
+    id: number;
     name: string;
-    description: string;
-    banner: {
-      url: string;
-    };
-    location: string;
-    start: string;
-    slug: string;
+    title: string;
+    datetime: string;
+    end_datetime: string;
+    event_url: string;
   }[];
 };
 
@@ -36,16 +33,15 @@ export default function Events({ title, subtitle, events }: EventsProps) {
       </span>
       {!!events?.length ? (
         <ol className="flex w-full flex-row flex-wrap justify-center gap-4">
-          {events.map(({ id, name, description, banner, location, start, slug }) => (
+          {events.map(({ id, name, title, datetime, end_datetime, event_url }) => (
             <Event
               key={id}
-              banner_alt=""
-              banner_image={banner.url}
-              description={description}
-              location={location}
-              slug={slug}
-              start={start}
-              title={name}
+              id={id}
+              name={name}
+              title={title}
+              datetime={datetime}
+              end_datetime={end_datetime}
+              event_url={event_url}
             />
           ))}
         </ol>
