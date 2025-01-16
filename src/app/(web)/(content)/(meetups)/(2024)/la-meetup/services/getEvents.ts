@@ -12,19 +12,7 @@ type Event = {
 
 export default async function getEvents() {
   const eventsResponse = await fetch("https://meetup-bot.marpo60.xyz/json");
-  const { meetups: allEvents } = await eventsResponse.json();
-
-  const events = allEvents
-    .filter((event: { datetime: string }) => {
-      const eventDate = new Date(event.datetime);
-      const today = new Date();
-      const thirtyDaysFromNow = new Date();
-      thirtyDaysFromNow.setDate(today.getDate() + 30);
-      return eventDate >= today && eventDate <= thirtyDaysFromNow;
-    })
-    .sort((a: { datetime: string }, b: { datetime: string }) => {
-      return new Date(a.datetime).getTime() - new Date(b.datetime).getTime();
-    });
+  const { meetups: events } = await eventsResponse.json();
 
   return events as unknown as Event;
 }
