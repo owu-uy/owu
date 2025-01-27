@@ -24,7 +24,7 @@ export default function Events({ title, subtitle, events }: EventsProps) {
   return (
     <section
       ref={sectionsRefs[SectionKey.Events]}
-      className="relative flex min-h-[800px] w-full flex-col justify-center gap-8 self-center pt-20 text-white"
+      className="relative flex min-h-[800px] w-full flex-col items-center justify-center gap-8 self-center pt-20 text-white"
       id={SectionKey.Events}
     >
       <span className="flex flex-col gap-1">
@@ -32,16 +32,16 @@ export default function Events({ title, subtitle, events }: EventsProps) {
         <h3 className="text-center text-zinc-400">{subtitle}</h3>
       </span>
       {!!events?.length ? (
-        <ol className="flex w-full flex-row flex-wrap justify-center gap-4">
+        <ol className="flex w-full flex-col items-center justify-center gap-4">
           {events.map(({ id, name, title, datetime, end_datetime, event_url }) => (
             <Event
               key={id}
-              id={id}
-              name={name}
-              title={title}
               datetime={datetime}
               end_datetime={end_datetime}
               event_url={event_url}
+              id={id}
+              name={name}
+              title={title}
             />
           ))}
         </ol>
