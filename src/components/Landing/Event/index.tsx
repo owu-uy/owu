@@ -1,6 +1,5 @@
 import { format, parseISO } from "date-fns";
 import { es } from "date-fns/locale";
-import Image from "next/image";
 import Link from "next/link";
 
 type EventProps = {
@@ -14,7 +13,7 @@ type EventProps = {
 
 export default function Event({ name, title, datetime, end_datetime, event_url }: EventProps) {
   return (
-    <li className="group flex w-full min-w-0 cursor-pointer gap-3 rounded-md bg-white/10 text-white sm:max-w-[360px]">
+    <li className="group flex w-full min-w-0 cursor-pointer gap-3 rounded-md bg-white/10 text-xs text-white sm:max-w-[550px] sm:text-base">
       <Link className="w-full" href={event_url}>
         <div className="flex min-w-0 flex-1 flex-col justify-between gap-3 rounded-md bg-[#36393e] p-4 group-hover:bg-[#000214]/10">
           <span className="flex flex-row items-center justify-between">

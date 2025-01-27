@@ -11,7 +11,10 @@ type Event = {
 }[];
 
 export default async function getEvents() {
-  const eventsResponse = await fetch("https://meetup-bot.marpo60.xyz/json");
+  const eventsResponse = await fetch("https://meetup-bot.marpo60.xyz/json", {
+    // Revalidate events every hour to check for new events :)
+    next: { revalidate: 3600 },
+  });
   const { meetups: events } = await eventsResponse.json();
 
   return events as unknown as Event;
